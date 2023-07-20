@@ -1,31 +1,24 @@
 class User {
-  int id = 0;
-  String name = "";
+  int id;
+  String name;
   int age;
   double height;
 
   User({required this.id, required this.name, required this.age, required this.height});
 
-  static User fromJson(Map<dynamic, dynamic> userJson) {
-    return User(
+  static User fromJson(Map<dynamic, dynamic> userJson) => User(
       id: userJson['id'],
       name: userJson['name'],
       age: userJson['age'],
-      height: userJson['height'],
-    );
-  }
+      height: userJson['height']);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'age': age,
-      'height': height,
-    };
-  }
+  Map toJson() => {
+        'id': id,
+        'name': name,
+        'age': age,
+        'height': height,
+      };
 
-  @override
-  String toString() {
-    return 'User(id : $id ,name: $name,  age: $age, height: $height)';
-  }
+  String toString() =>
+      'User(id : ${this.id} ,name: ${this.name}, age: ${this.age}, height: ${this.height})';
 }

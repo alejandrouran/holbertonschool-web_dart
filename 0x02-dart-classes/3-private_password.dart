@@ -2,7 +2,6 @@ class Password {
   String _password = "";
 
   String get password => _password;
-  set password(String value) => _password = value;
 
   bool isValid() {
     // Check the length of the password

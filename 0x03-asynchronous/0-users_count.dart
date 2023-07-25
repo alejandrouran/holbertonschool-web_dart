@@ -12,3 +12,7 @@ Future<void> usersCount() async {
   // Print the number of users.
   print('$userCount');
 }
+
+void main() async {
+  await usersCount();
+}

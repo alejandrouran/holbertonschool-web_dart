@@ -10,5 +10,5 @@ Future<void> usersCount() async {
   int userCount = await fetchUsersCount();
 
   // Print the number of users.
-  print(userCount);
+  print('$userCount');
 }

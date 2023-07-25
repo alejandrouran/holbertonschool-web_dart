@@ -1,21 +1,31 @@
-import '4-util.dart';
 import 'dart:convert';
+import 'dart:async';
 
-Future<double> calculateTotal() async {
+Future<String> fetchUserData() => Future.delayed(
+      const Duration(seconds: 2),
+      () =>
+          '{"id" : "7ee9a243-01ca-47c9-aa14-0149789764c3", "username" : "admin"}',
+    );
+
+Future<bool> checkCredentials() =>
+    Future.delayed(const Duration(seconds: 2), () => true);
+    
+greetUser() async {
   try {
-    return fetchUserData().then((user) {
-      String id = json.decode(user)["id"];
-      return fetchUserOrders(id).then((products) async {
-        double finalPrice = 0.0;
-        for (String product in json.decode(products)) {
-          await fetchProductPrice(product).then((price) {
-            finalPrice += json.decode(price);
-          });
-        }
-        return finalPrice;
-      });
-    });
+  return 'hello ${json.decode(await fetchUserData())['username']}';
   } catch (err) {
-    return -1;
+    print('error caught: $err');
+  }
+}
+
+loginUser() async {
+ try {
+  if (await checkCredentials()) {
+    return await greetUser();
+  } else {
+    return 'Wrong credentials';
+  }
+} catch (err) {
+    print('error caught: $err');
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import '1-util.dart';
 
 Future<String> fetchUserData() => Future.delayed(
       const Duration(seconds: 2),
